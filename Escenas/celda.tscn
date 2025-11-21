@@ -1,0 +1,136 @@
+[gd_scene load_steps=17 format=3 uid="uid://bq8e70vj3dflx"]
+
+[ext_resource type="Script" uid="uid://uiq44rfhsql6" path="res://Scripts/celda.gd" id="1_xcwkc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nahaa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t17ur"]
+albedo_color = Color(0, 0, 1.457938, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t17ur"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xcwkc"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xcwkc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nahaa"]
+size = Vector3(2.104004, 1, 2.0022278)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nahaa"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 4.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t17ur"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 4.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_npqup"]
+lightmap_size_hint = Vector2i(12, 12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hi7sx"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tobmk"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x5xgk"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="BoxMesh" id="BoxMesh_kew0k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pujec"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75iuj"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Celda" type="Node3D"]
+script = ExtResource("1_xcwkc")
+
+[node name="Tapa" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+freeze = true
+
+[node name="Tapa" type="MeshInstance3D" parent="Tapa"]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0.023560643, 0)
+mesh = SubResource("BoxMesh_nahaa")
+skeleton = NodePath("../CollisionShape3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_t17ur")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tapa"]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+shape = SubResource("BoxShape3D_t17ur")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="Base" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(1.8, 0.5, 2)
+
+[node name="Agujero" type="CSGBox3D" parent="CSGCombiner3D/Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+operation = 2
+size = Vector3(1.5, 1, 1.5)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 0.5, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_xcwkc")
+
+[node name="SistemaPala" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39386392, 2)
+
+[node name="PivotePrincipal" type="Node3D" parent="SistemaPala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1.0682657)
+
+[node name="BasePala" type="MeshInstance3D" parent="SistemaPala/PivotePrincipal"]
+transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.0243306)
+mesh = SubResource("PlaneMesh_xcwkc")
+
+[node name="CuerpoFisico" type="AnimatableBody3D" parent="SistemaPala/PivotePrincipal/BasePala"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SistemaPala/PivotePrincipal/BasePala/CuerpoFisico"]
+transform = Transform3D(1, 0, 0, 0, 0.01, 0, 0, 0, 1, -0.007568364, 0, 0.0013885498)
+shape = SubResource("BoxShape3D_nahaa")
+
+[node name="Brazo1" type="MeshInstance3D" parent="SistemaPala/PivotePrincipal"]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, -1.368, 0, 1.92)
+mesh = SubResource("CylinderMesh_nahaa")
+skeleton = NodePath("../..")
+
+[node name="Brazo2" type="MeshInstance3D" parent="SistemaPala/PivotePrincipal"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.3678732, 0, 1.9227928)
+mesh = SubResource("CylinderMesh_t17ur")
+
+[node name="RespaldoPala" type="MeshInstance3D" parent="SistemaPala/PivotePrincipal"]
+transform = Transform3D(1.2, 0, 0, 0, -1.3113417e-08, -0.3, 0, 0.3, -1.3113417e-08, 0, 0.05367565, 3.020046)
+mesh = SubResource("PlaneMesh_npqup")
+surface_material_override/0 = SubResource("StandardMaterial3D_hi7sx")
+
+[node name="BrazoConectorIzquierdo" type="MeshInstance3D" parent="SistemaPala"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.9695277, -0.5, -1.9228106)
+mesh = SubResource("CylinderMesh_tobmk")
+skeleton = NodePath("../PivotePrincipal")
+
+[node name="BrazoConectorDerecho" type="MeshInstance3D" parent="SistemaPala"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.97, -0.5, -1.932)
+mesh = SubResource("CylinderMesh_x5xgk")
+skeleton = NodePath("../PivotePrincipal")
+
+[node name="ServoIzq" type="MeshInstance3D" parent="SistemaPala"]
+transform = Transform3D(-3.4969112e-08, 0, -0.20000002, 0, 0.4, 0, 0.8000001, 0, -8.742278e-09, -1.16, -0.5, -1.102)
+mesh = SubResource("BoxMesh_kew0k")
+skeleton = NodePath("../PivotePrincipal")
+surface_material_override/0 = SubResource("StandardMaterial3D_pujec")
+
+[node name="ServoDer" type="MeshInstance3D" parent="SistemaPala"]
+transform = Transform3D(-3.4969112e-08, 0, -0.2, 0, 0.4, 0, 0.8, 0, -8.742278e-09, 1.1677365, -0.5, -1.0928106)
+mesh = SubResource("BoxMesh_kew0k")
+skeleton = NodePath("../PivotePrincipal")
+surface_material_override/0 = SubResource("StandardMaterial3D_75iuj")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
