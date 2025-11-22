@@ -88,7 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39386392, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1.0682657)
 
 [node name="BasePala" type="MeshInstance3D" parent="SistemaPala/PivotePrincipal"]
-transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.0243306)
+transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.410481)
 mesh = SubResource("PlaneMesh_xcwkc")
 
 [node name="CuerpoFisico" type="AnimatableBody3D" parent="SistemaPala/PivotePrincipal/BasePala"]
@@ -107,7 +107,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.36
 mesh = SubResource("CylinderMesh_t17ur")
 
 [node name="RespaldoPala" type="MeshInstance3D" parent="SistemaPala/PivotePrincipal"]
-transform = Transform3D(1.2, 0, 0, 0, -1.3113417e-08, -0.3, 0, 0.3, -1.3113417e-08, 0, 0.05367565, 3.020046)
+transform = Transform3D(1.2, 0, 0, 0, -1.3113417e-08, -0.3, 0, 0.3, -1.3113417e-08, 0, 0.05367565, 2.4061964)
 mesh = SubResource("PlaneMesh_npqup")
 surface_material_override/0 = SubResource("StandardMaterial3D_hi7sx")
 

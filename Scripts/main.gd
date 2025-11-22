@@ -13,7 +13,7 @@ var celda_scene = preload("res://Escenas/Celda.tscn")
 @onready var btn_reset = $CanvasLayer/Control/Panel/BotonReset
 
 # --- VARIABLES DE CONFIGURACIÓN ---
-var separacion_celdas = 2.5  # Distancia física entre bloques
+var separacion_celdas = 4.0  # Distancia física entre bloques
 var posicion_home_x = 0.5   # Donde descansa la máquina (fuera de la cinta)
 
 # --- VARIABLES DE ESTADO DE LA MÁQUINA ---
@@ -230,7 +230,7 @@ func animar_servo_mecanico(indice_celda, nuevo_valor):
 # Altura a la que descansa el cubo sobre la cinta (Ajusta según tu escena Celda)
 var ALTURA_CINTA = 1
 # Altura a la que está la pala esperando abajo (Ajusta según tu SistemaPala)
-var ALTURA_PALA = 0.5
+var ALTURA_PALA = 0.4
 
 # --- SUB-RUTINA 1: EL PALO EMPUJA Y EL CUBO CAE ---
 func maniobra_empujar_palo(celda_visual):
@@ -245,7 +245,7 @@ func maniobra_empujar_palo(celda_visual):
 	# 2. GOLPE + DESLIZAMIENTO (Sale de la cinta)
 	var t2 = create_tween().set_parallel(true)
 	t2.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	t2.tween_property(eje_servo, "rotation_degrees:x", -45.0, 0.4)
+	t2.tween_property(eje_servo, "rotation_degrees:x", -25.0, 0.4)
 	# El cubo se mueve hacia afuera (Z=2.0) MIENTRAS mantiene la altura de la cinta
 	t2.tween_property(tapa_fisica, "position:z", 2.0, 0.4)
 	await t2.finished

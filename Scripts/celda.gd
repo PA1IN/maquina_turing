@@ -6,7 +6,7 @@ var valor: int = 0
 @onready var tapa = $Tapa
 
 var altura_cinta = 1
-var altura_pala = 0.5
+var altura_pala = 0.8
 
 
 func set_valor(nuevo_valor: int):

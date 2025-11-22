@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ys6hxwf0nyca"]
+[gd_scene load_steps=31 format=3 uid="uid://ys6hxwf0nyca"]
 
 [ext_resource type="PackedScene" uid="uid://bq8e70vj3dflx" path="res://Escenas/celda.tscn" id="1_6lbni"]
 [ext_resource type="Script" uid="uid://dbkkw4n5sqgmt" path="res://Scripts/main.gd" id="1_vt1rs"]
@@ -22,6 +22,77 @@ height = 3.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ia52"]
 albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7xwpo"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 2.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2ia52"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 5.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_crgrh"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_s2ilj"]
+top_radius = 0.05
+bottom_radius = 0.2
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktoa8"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1md0r"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n3qho"]
+top_radius = 0.05
+bottom_radius = 0.2
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8mww"]
+albedo_color = Color(0.33999997, 0.87899995, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ia52"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crgrh"]
+albedo_color = Color(0.3724035, 0.3724035, 0.3724035, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0kh0y"]
+top_radius = 0.2
+height = 86.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_crgrh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xwpo"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2ilj"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s2ilj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ktoa8"]
+size = Vector3(0.5, 7, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1md0r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3qho"]
+albedo_color = Color(1.7567725e-06, 0.29717636, 0.38092178, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l8mww"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n3qho"]
+size = Vector3(0.5, 5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b1m0k"]
+size = Vector3(0.5, 5, 0.5)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_vt1rs")
@@ -59,6 +130,32 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.009895825, 0, 0.19998792, 0, 0.4, 0, -0.89994556, 0, 0.0021990722, -0.23869562, 1.4245462, -3.861729)
 mesh = SubResource("BoxMesh_7xwpo")
 surface_material_override/0 = SubResource("StandardMaterial3D_2ia52")
+
+[node name="Soporte1" type="MeshInstance3D" parent="Cabezal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.957862, -3.016489)
+mesh = SubResource("CylinderMesh_7xwpo")
+
+[node name="Soporte2" type="MeshInstance3D" parent="Cabezal"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 2.8134737, -2.988109)
+mesh = SubResource("CylinderMesh_2ia52")
+
+[node name="Sensor1" type="MeshInstance3D" parent="Cabezal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8604243, -2.6623065)
+mesh = SubResource("CylinderMesh_crgrh")
+
+[node name="Cabeza1" type="MeshInstance3D" parent="Cabezal/Sensor1"]
+transform = Transform3D(1, 0, 0, 0, -0.99999994, 8.742277e-08, 0, -8.742277e-08, -0.99999994, 0, -0.5130074, 0)
+mesh = SubResource("CylinderMesh_s2ilj")
+surface_material_override/0 = SubResource("StandardMaterial3D_ktoa8")
+
+[node name="Sensor2" type="MeshInstance3D" parent="Cabezal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8608017, -3.28)
+mesh = SubResource("CylinderMesh_1md0r")
+
+[node name="Cabeza2" type="MeshInstance3D" parent="Cabezal/Sensor2"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -0.513, 0)
+mesh = SubResource("CylinderMesh_n3qho")
+surface_material_override/0 = SubResource("StandardMaterial3D_l8mww")
 
 [node name="Cinta" type="Node3D" parent="."]
 
@@ -134,3 +231,84 @@ visible = false
 
 [node name="Celda2" parent="Celda2" instance=ExtResource("1_6lbni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0510793, 0, 0.33319807)
+
+[node name="EstructuraMaquina" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="BasePrincipal" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(90, 0, 0, 0, 0.5, 0, 0, 0, 10, 38.089886, 1.4438267, 0)
+mesh = SubResource("BoxMesh_2ia52")
+surface_material_override/0 = SubResource("StandardMaterial3D_crgrh")
+
+[node name="RielTrasero" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 39.27136, 7.442019, -2.4080489)
+mesh = SubResource("CylinderMesh_0kh0y")
+
+[node name="RielDelantero" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 39.27136, 7.442019, 1.8672163)
+mesh = SubResource("CylinderMesh_0kh0y")
+
+[node name="MotorIzquierda" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5187998, 9.070257, 0)
+mesh = SubResource("BoxMesh_crgrh")
+surface_material_override/0 = SubResource("StandardMaterial3D_7xwpo")
+
+[node name="MotorDerecho" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 81.53467, 8.998092, 0)
+mesh = SubResource("BoxMesh_crgrh")
+surface_material_override/0 = SubResource("StandardMaterial3D_s2ilj")
+
+[node name="Correa" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(85, 0, 0, 0, 0.1, 0, 0, 0, 0.05, 39.27136, 9.053007, -0.14018726)
+mesh = SubResource("BoxMesh_s2ilj")
+
+[node name="Correa2" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(85, 0, 0, 0, 0.1, 0, 0, 0, 0.05, 39.27136, 9.053007, -1.3993902)
+mesh = SubResource("BoxMesh_s2ilj")
+
+[node name="Correa3" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(85, 0, 0, 0, 0.1, 0, 0, 0, 0.05, 39.27136, 9.053007, 1.2260695)
+mesh = SubResource("BoxMesh_s2ilj")
+
+[node name="Pilar1" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5377471, 5.382713, -2.3939753)
+mesh = SubResource("BoxMesh_ktoa8")
+
+[node name="Pilar2" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5377471, 5.382713, 1.8483732)
+mesh = SubResource("BoxMesh_ktoa8")
+
+[node name="Pilar3" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.88885, 5.382713, -2.3939753)
+mesh = SubResource("BoxMesh_ktoa8")
+
+[node name="Pilar4" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.88885, 5.382713, 1.8483732)
+mesh = SubResource("BoxMesh_ktoa8")
+
+[node name="Electronica" type="Node3D" parent="EstructuraMaquina"]
+
+[node name="Arduino" type="MeshInstance3D" parent="EstructuraMaquina/Electronica"]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1.5, -4.769672, 1.7440357, 4.2189236)
+mesh = SubResource("BoxMesh_1md0r")
+surface_material_override/0 = SubResource("StandardMaterial3D_n3qho")
+
+[node name="Protoboard" type="MeshInstance3D" parent="EstructuraMaquina/Electronica"]
+transform = Transform3D(2, 0, 0, 0, 0.2, 0, 0, 0, 1, -2.8124862, 1.7765882, 4.397275)
+mesh = SubResource("BoxMesh_l8mww")
+
+[node name="Pilar5" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 81.8085, 7.3572974, -0.1884327)
+mesh = SubResource("BoxMesh_n3qho")
+
+[node name="Pilar7" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 81.8875, 8.5554905, -0.2847278)
+mesh = SubResource("BoxMesh_n3qho")
+
+[node name="Pilar6" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -2.5108404, 7.3572974, -0.27486002)
+mesh = SubResource("BoxMesh_b1m0k")
+
+[node name="Pilar8" type="MeshInstance3D" parent="EstructuraMaquina"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -2.5108404, 8.420202, -0.27486002)
+mesh = SubResource("BoxMesh_b1m0k")
