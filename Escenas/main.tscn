@@ -225,6 +225,14 @@ offset_right = 81.0
 offset_bottom = 228.0
 text = "Reiniciar"
 
+[node name="Button" type="Button" parent="CanvasLayer/Control/Panel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 2.0
+offset_right = 104.0
+offset_bottom = 33.0
+text = "Modo"
+
 [node name="Celda2" parent="." instance=ExtResource("1_6lbni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2273946, 0, 0.33319807)
 visible = false
