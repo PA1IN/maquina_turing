@@ -1,8 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://ys6hxwf0nyca"]
+[gd_scene load_steps=36 format=3 uid="uid://ys6hxwf0nyca"]
 
 [ext_resource type="PackedScene" uid="uid://bq8e70vj3dflx" path="res://Escenas/celda.tscn" id="1_6lbni"]
 [ext_resource type="Script" uid="uid://dbkkw4n5sqgmt" path="res://Scripts/main.gd" id="1_vt1rs"]
 [ext_resource type="Script" uid="uid://bnnyqnipikg2v" path="res://Scripts/gimbal_camara.gd" id="3_0kh0y"]
+[ext_resource type="Script" uid="uid://dr5wdutxioeoi" path="res://Scripts/switch.gd" id="4_7xwpo"]
+[ext_resource type="PackedScene" uid="uid://nkqfxneb8ayb" path="res://Escenas/Boton3D.tscn" id="5_2ia52"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0kh0y"]
 
@@ -93,6 +95,13 @@ size = Vector3(0.5, 5, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_b1m0k"]
 size = Vector3(0.5, 5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nyv6x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i4rd6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ndum"]
+size = Vector3(1.0112305, 1, 1)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_vt1rs")
@@ -228,9 +237,9 @@ text = "Reiniciar"
 [node name="Button" type="Button" parent="CanvasLayer/Control/Panel"]
 layout_mode = 0
 offset_left = 14.0
-offset_top = 2.0
+offset_top = 4.0
 offset_right = 104.0
-offset_bottom = 33.0
+offset_bottom = 35.0
 text = "Modo"
 
 [node name="Celda2" parent="." instance=ExtResource("1_6lbni")]
@@ -320,3 +329,30 @@ mesh = SubResource("BoxMesh_b1m0k")
 [node name="Pilar8" type="MeshInstance3D" parent="EstructuraMaquina"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -2.5108404, 8.420202, -0.27486002)
 mesh = SubResource("BoxMesh_b1m0k")
+
+[node name="Switch3D" type="Node3D" parent="."]
+script = ExtResource("4_7xwpo")
+
+[node name="Base" type="MeshInstance3D" parent="Switch3D"]
+transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 1, -6.0748196, -0.10653725, -3.7006698)
+mesh = SubResource("BoxMesh_nyv6x")
+
+[node name="Palanca" type="Node3D" parent="Switch3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.075, 0.291, -3.701)
+
+[node name="MeshPalanca" type="MeshInstance3D" parent="Switch3D/Palanca"]
+transform = Transform3D(1.0927847e-08, -9.900354e-15, -0.25, -3.774895e-08, -1.5, 0, -0.25, 2.2649371e-07, -1.0927847e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_i4rd6")
+
+[node name="Area3D" type="Area3D" parent="Switch3D/Palanca"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Switch3D/Palanca/Area3D"]
+shape = SubResource("BoxShape3D_7ndum")
+
+[node name="BotonStart3D" parent="." instance=ExtResource("5_2ia52")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6780844, -0.33625054, -2.4992938)
+albedo_color = Color(0.87058824, 0, 0, 1)
+
+[node name="BotonReset3D" parent="." instance=ExtResource("5_2ia52")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7099905, -0.34554484, -1.7182999)
+albedo_color = Color(1, 1, 0, 1)
