@@ -356,3 +356,62 @@ albedo_color = Color(0.87058824, 0, 0, 1)
 [node name="BotonReset3D" parent="." instance=ExtResource("5_2ia52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7099905, -0.34554484, -1.7182999)
 albedo_color = Color(1, 1, 0, 1)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3006797, 0, 7.641144)
+text = "Base completa:
+Largo: 25–30 cm
+Ancho: 8–10 cm
+"
+
+[node name="Celda3" parent="." instance=ExtResource("1_6lbni")]
+transform = Transform3D(0.002268984, 0, -0.99999744, 0, 1, 0, 0.99999744, 0, 0.002268984, -11.185141, 0, 2.219471)
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.822353, 0, 5.0823164)
+text = "Cubo:
+Ancho: 1.8 cm 
+Largo: 1.8 cm 
+Altura: 2.0 cm
+"
+
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.727715, 0, 5.0823164)
+text = "Base de la celda :
+Ancho: 2.0 cm
+Largo: 2.0 cm
+Grosor: 0.2–0.3 cm
+"
+
+[node name="RielDelantero" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 39.27136, 0.24231958, 10.840628)
+mesh = SubResource("CylinderMesh_0kh0y")
+
+[node name="Label3D4" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3006797, 0, 13.331093)
+text = "Rieles largos:
+Largo: 20-25 cm
+Diámetro: 15 cm
+"
+
+[node name="Pilar2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.625453, 2.7729392, 11.184339)
+mesh = SubResource("BoxMesh_ktoa8")
+
+[node name="Label3D5" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.586046, 0, 11.818139)
+text = "Pilar Soporte:
+Altura: 10 cm
+Ancho: 4 cm
+"
+
+[node name="Actuador" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -8.906294, 2.4368496, 11.626636)
+mesh = SubResource("CylinderMesh_vt1rs")
+skeleton = NodePath("../..")
+
+[node name="Label3D6" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.956659, 0.48742747, 12.233738)
+text = "Palo que mueve los cubos:
+Largo : 7 cm
+Grosor: 0.4 cm"
