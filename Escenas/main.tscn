@@ -1,10 +1,11 @@
-[gd_scene load_steps=36 format=3 uid="uid://ys6hxwf0nyca"]
+[gd_scene load_steps=37 format=3 uid="uid://ys6hxwf0nyca"]
 
 [ext_resource type="PackedScene" uid="uid://bq8e70vj3dflx" path="res://Escenas/celda.tscn" id="1_6lbni"]
 [ext_resource type="Script" uid="uid://dbkkw4n5sqgmt" path="res://Scripts/main.gd" id="1_vt1rs"]
 [ext_resource type="Script" uid="uid://bnnyqnipikg2v" path="res://Scripts/gimbal_camara.gd" id="3_0kh0y"]
 [ext_resource type="Script" uid="uid://dr5wdutxioeoi" path="res://Scripts/switch.gd" id="4_7xwpo"]
 [ext_resource type="PackedScene" uid="uid://nkqfxneb8ayb" path="res://Escenas/Boton3D.tscn" id="5_2ia52"]
+[ext_resource type="ArrayMesh" uid="uid://cgc7ycxot5wep" path="res://Escenas/arduino-nano.obj" id="6_crgrh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0kh0y"]
 
@@ -415,3 +416,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.956659, 0.48742747, 12.233
 text = "Palo que mueve los cubos:
 Largo : 7 cm
 Grosor: 0.4 cm"
+
+[node name="ArduinoNano" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.496297, 0, 15.860672)
+mesh = ExtResource("6_crgrh")
