@@ -188,8 +188,11 @@ func actualizar_vista_previa(_ignorar) -> void:
 			cinta_datos.append(1)   # B
 		cinta_datos.append(2)       # separador derecho
 
+	var ocupadas = cinta_datos.size()
+	var tamano_mesa = 21
+	var celdas_relleno = max(5, tamano_mesa - ocupadas)
 	# Zonas en blanco al final
-	for i in range(5):
+	for i in range(celdas_relleno):
 		cinta_datos.append(0)
 
 	# Construcción visual
@@ -336,7 +339,25 @@ func maniobra_empujar_palo(celda_visual) -> void:
 	t2.tween_property(eje_servo, "rotation_degrees:x", -25.0, 0.4)
 	t2.tween_property(tapa_fisica, "position:z", 2.0, 0.4)
 	await t2.finished
+	
+	tapa_fisica.freeze = false
+	await get_tree().create_timer(0.8).timeout
 
+	tapa_fisica.freeze = true	
+	
+	var t3 = create_tween()
+	t3.tween_property(eje_servo, "rotation_degrees:x", 0.0, 0.3)
+	await t3.finished
+	
+	# Actualizar lógica interna (0 = Abajo en la pala)
+	if celda_visual.has_method("forzar_estado_sin_animar"):
+		celda_visual.valor = 0 
+		#celda_visual.forzar_estado_sin_animar(0)
+		# IMPORTANTE: Forzamos visualmente que se quede abajo
+		#tapa_fisica.position.y = ALTURA_PALA
+		#tapa_fisica.position.z = 2.0
+		#ALTURA_PALA = tapa_fisica.position.y
+	"""
 	var t3 = create_tween()
 	t3.tween_property(eje_servo, "rotation_degrees:x", 0.0, 0.3)
 	await t3.finished
@@ -345,6 +366,7 @@ func maniobra_empujar_palo(celda_visual) -> void:
 		celda_visual.forzar_estado_sin_animar(Celda.Simbolo.BLANCO)
 	else:
 		celda_visual.valor = Celda.Simbolo.BLANCO
+	"""
 
 func maniobra_levantar_pala(celda_visual) -> void:
 	await celda_visual.animar_retorno_pala()
