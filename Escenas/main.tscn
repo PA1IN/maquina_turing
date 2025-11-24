@@ -356,3 +356,9 @@ albedo_color = Color(0.87058824, 0, 0, 1)
 [node name="BotonReset3D" parent="." instance=ExtResource("5_2ia52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7099905, -0.34554484, -1.7182999)
 albedo_color = Color(1, 1, 0, 1)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8993187, 0, 9.017141)
+text = "Base completa:
+Largo: 25–30 cm
+"
