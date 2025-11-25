@@ -58,16 +58,21 @@ var reglas_suma = {
 	},
 	"q1": {
 		1: {"escribir": 1, "mover": 1, "next": "q1"},
+		#encuentra el primer 0 y avanza a q2 para ver que hay despues
 		0: {"escribir": 0, "mover": 1, "next": "q2"} 
 	},
 	"q2": {
+		#caso en que se encuentra un 1, se retrocede y se rellena el 0
 		1: {"escribir": 1, "mover": -1, "next": "q3"},
 		
+		#caso en que se encuentra un 0, sigue leyendo hasta encontrar un 1 o finalizar la cinta
 		0: {"escribir": 0, "mover": 1, "next": "q2"},
 		
+		#si se lee un separador, termina la lectura
 		2: {"escribir": 2, "mover": -1, "next": "FINAL"}
 	},
 	"q3": {
+		#se rellena el 0 que habia para escribir 1 y juntar el string
 		0: {"escribir": 1, "mover": 0, "next": "FINAL"}
 	}
 }
