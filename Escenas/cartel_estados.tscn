@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7smq2fmwio5d"]
+
+[ext_resource type="Script" uid="uid://21hp4pubpopo" path="res://Scripts/CartelInstrucciones.gd" id="1_tv2nm"]
+[ext_resource type="Texture2D" uid="uid://bye6c4g8dxqd6" path="res://Materiales/tabla_suma.jpg" id="2_6f5nm"]
+[ext_resource type="Texture2D" uid="uid://da08w5unr0w4" path="res://Materiales/Diseño sin título.jpg" id="3_02gfk"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6f5nm"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="BoxMesh" id="BoxMesh_6f5nm"]
+size = Vector3(3, 2, 0.1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_6f5nm"]
+size = Vector2(4, 4)
+
+[node name="CartelEstados" type="Node3D"]
+script = ExtResource("1_tv2nm")
+textura_suma = ExtResource("2_6f5nm")
+textura_resta = ExtResource("3_02gfk")
+
+[node name="Poste" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38372946, 0)
+mesh = SubResource("CylinderMesh_6f5nm")
+
+[node name="TableroPadre" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_6f5nm")
+
+[node name="Tablero" type="MeshInstance3D" parent="TableroPadre"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.11458576)
+mesh = SubResource("QuadMesh_6f5nm")
+skeleton = NodePath("../..")

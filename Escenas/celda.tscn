@@ -1,6 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bq8e70vj3dflx"]
+[gd_scene load_steps=19 format=3 uid="uid://bq8e70vj3dflx"]
 
 [ext_resource type="Script" uid="uid://uiq44rfhsql6" path="res://Scripts/celda.gd" id="1_xcwkc"]
+[ext_resource type="Material" uid="uid://gpb8tjqqekq6" path="res://Materiales/Mat_Azul.tres" id="2_t17ur"]
+[ext_resource type="Material" uid="uid://s4i3b5mkofsx" path="res://Materiales/Mat_Amarillo.tres" id="3_npqup"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nahaa"]
 
@@ -8,13 +10,14 @@
 albedo_color = Color(0, 0, 1.457938, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t17ur"]
+size = Vector3(1.5, 1.5, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xcwkc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xcwkc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nahaa"]
-size = Vector3(2.104004, 1, 2.0022278)
+size = Vector3(2.104, 0.2, 2.002)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_nahaa"]
 top_radius = 0.1
@@ -50,19 +53,21 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="Celda" type="Node3D"]
 script = ExtResource("1_xcwkc")
+escala_base = Vector3(1.2, 1.6, 1.2)
+material_uno = ExtResource("2_t17ur")
+material_separador = ExtResource("3_npqup")
 
 [node name="Tapa" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 freeze = true
 
 [node name="Tapa" type="MeshInstance3D" parent="Tapa"]
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0.023560643, 0)
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
 mesh = SubResource("BoxMesh_nahaa")
 skeleton = NodePath("../CollisionShape3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_t17ur")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tapa"]
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
 shape = SubResource("BoxShape3D_t17ur")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
@@ -94,7 +99,6 @@ mesh = SubResource("PlaneMesh_xcwkc")
 [node name="CuerpoFisico" type="AnimatableBody3D" parent="SistemaPala/PivotePrincipal/BasePala"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SistemaPala/PivotePrincipal/BasePala/CuerpoFisico"]
-transform = Transform3D(1, 0, 0, 0, 0.01, 0, 0, 0, 1, -0.007568364, 0, 0.0013885498)
 shape = SubResource("BoxShape3D_nahaa")
 
 [node name="Brazo1" type="MeshInstance3D" parent="SistemaPala/PivotePrincipal"]
