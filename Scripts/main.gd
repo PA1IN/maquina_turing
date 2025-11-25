@@ -39,6 +39,7 @@ var maquina_corriendo: bool = false
 
 # SUMA UNARIA  (A + B)
 # Cinta SUMA: 1^A 0 1^B 0 0 0...
+"""
 var reglas_suma = {
 	"q0": {
 		1: {"escribir": 0, "mover": 1, "next": "q1"},
@@ -46,6 +47,27 @@ var reglas_suma = {
 	},
 	"q1": {
 		1: {"escribir": 1, "mover": 1, "next": "q1"},
+		0: {"escribir": 1, "mover": 0, "next": "FINAL"}
+	}
+}
+"""
+var reglas_suma = {
+	"q0": {
+		1: {"escribir": 0, "mover": 1, "next": "q1"},
+		0: {"escribir": 0, "mover": 1, "next": "q0"} 
+	},
+	"q1": {
+		1: {"escribir": 1, "mover": 1, "next": "q1"},
+		0: {"escribir": 0, "mover": 1, "next": "q2"} 
+	},
+	"q2": {
+		1: {"escribir": 1, "mover": -1, "next": "q3"},
+		
+		0: {"escribir": 0, "mover": 1, "next": "q2"},
+		
+		2: {"escribir": 2, "mover": -1, "next": "FINAL"}
+	},
+	"q3": {
 		0: {"escribir": 1, "mover": 0, "next": "FINAL"}
 	}
 }
